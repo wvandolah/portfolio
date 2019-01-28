@@ -3,7 +3,6 @@
   "version": "2.2.0",
   "description": "Gatsby portfolio!",
   "main": "index.js",
-  "homepage": "https://github.com/EmaSuriano/gatsby-starter-mate#readme",
   "scripts": {
     "build": "cleandir ./.cache && gatsby build",
     "develop": "cleandir ./.cache && gatsby develop",
@@ -22,9 +21,6 @@
   ],
   "author": "William VanDolah",
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/EmaSuriano/gatsby-starter-mate/issues"
-  },
   "dependencies": {
     "clean-dir": "^1.0.3",
     "contentful": "^7.0.3",
