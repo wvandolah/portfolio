@@ -8,8 +8,8 @@
     "build": "cleandir ./.cache && gatsby build",
     "develop": "cleandir ./.cache && gatsby develop",
     "start": "npm run develop",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build",
+    "predeploy": "npm run build --prefix-paths",
+    "deploy": "gh-pages -d public",
     "lint": "eslint ./src",
     "setup": "node ./bin/setup.js"
   },
