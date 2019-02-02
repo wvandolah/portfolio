@@ -46,7 +46,7 @@ const Background = () => (
 
 const CARD_HEIGHT = '225px';
 
-const MEDIA_QUERY_SMALL = '@media (max-width: 400px)';
+const MEDIA_QUERY_SMALL = '@media (max-width: 600px)';
 
 const Title = styled(Text)`
   font-size: 14px;
@@ -214,7 +214,7 @@ const Projects = () => (
         }
       `}
       render={({ contentfulAbout }) => (
-        <CardContainer minWidth="575px">
+        <CardContainer minWidth="400px">
           {contentfulAbout.projects.map((p, i) => (
             <Fade key={p.id} bottom delay={i * 200}>
               <Project {...p} />

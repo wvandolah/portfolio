@@ -7,12 +7,12 @@ export const CardContainer = styled.div`
 
   grid-template-columns: repeat(
     auto-fill,
-    ${props => props.minWidth}
-    /* minmax(${props => props.minWidth}, 600px) */
+    /* ${props => props.minWidth} */
+    minmax(${props => props.minWidth}, 600px)
   );
   justify-items: start;
 
-  @media only screen and (max-width: 400px) {
+  @media only screen and (max-width: 600px) {
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   }
 `;
