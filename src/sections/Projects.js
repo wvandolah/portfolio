@@ -44,7 +44,7 @@ const Background = () => (
   </div>
 );
 
-const CARD_HEIGHT = '200px';
+const CARD_HEIGHT = '225px';
 
 const MEDIA_QUERY_SMALL = '@media (max-width: 400px)';
 
@@ -109,6 +109,7 @@ const Project = ({
   projectUrl,
   repositoryUrl,
   type,
+  techStack,
   publishedDate,
   logo,
 }) => (
@@ -120,8 +121,13 @@ const Project = ({
             {name}
           </Title>
         </span>
-        <Text width={[1]} style={{ overflow: 'auto' }}>
+        <Text width={[1]} style={{ overflow: 'auto', flex: 1 }}>
           {description}
+        </Text>
+        <Text alignSelf="flex-end">
+          <b>Tech Stack:</b>
+          {` `}
+          {techStack.map((item, index) => (index ? ', ' : '') + item)}
         </Text>
       </TextContainer>
 
@@ -172,6 +178,7 @@ Project.propTypes = {
   projectUrl: PropTypes.string.isRequired,
   repositoryUrl: PropTypes.string.isRequired,
   type: PropTypes.string.isRequired,
+  techStack: PropTypes.arrayOf(PropTypes.string).isRequired,
   publishedDate: PropTypes.string.isRequired,
   logo: PropTypes.shape({
     image: PropTypes.shape({
@@ -195,6 +202,7 @@ const Projects = () => (
               repositoryUrl
               publishedDate(formatString: "YYYY")
               type
+              techStack
               logo {
                 title
                 image: resize(width: 200, quality: 100) {
@@ -206,7 +214,7 @@ const Projects = () => (
         }
       `}
       render={({ contentfulAbout }) => (
-        <CardContainer minWidth="350px">
+        <CardContainer minWidth="575px">
           {contentfulAbout.projects.map((p, i) => (
             <Fade key={p.id} bottom delay={i * 200}>
               <Project {...p} />
