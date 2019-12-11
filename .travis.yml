@@ -18,7 +18,11 @@ script:
   - yarn build
   - yarn lint
 
-branches:
-  only:
-    - master
-    - '/^greenkeeper/.*$/'
+deploy:
+  provider: s3
+  access_key_id: $AWS_KEY
+  secret_access_key: $AWS_SECRET
+  bucket: 'wvandolah.com'
+  skip_cleanup: true
+  acl: public_read
+  local_dir: public
