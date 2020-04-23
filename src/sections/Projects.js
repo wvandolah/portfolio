@@ -246,7 +246,7 @@ const ProjectsCerts = () => (
           ))}
         </CardContainer>
         <br />
-        <Section.Header name="Certifications" icon="💻" Box="notebook" />
+        <Section.Header name="Certifications" icon="💳" Box="notebook" />
         <CardContainer minWidth="400px">
           {contentfulAbout.certifications.map((p, i) => (
             <Fade key={p.id} bottom delay={i * 200}>
