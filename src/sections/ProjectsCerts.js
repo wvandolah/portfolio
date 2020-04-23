@@ -44,6 +44,32 @@ const Background = () => (
   </div>
 );
 
+const Background2 = () => (
+  <div>
+    <Triangle
+      color="backgroundDark"
+      height={['15vh', '10vh']}
+      width={['100vw', '100vw']}
+      invertX
+    />
+
+    <Triangle
+      color="secondary"
+      height={['50vh', '40vh']}
+      width={['70vw', '40vw']}
+      invertY
+    />
+
+    <Triangle
+      color="primaryDark"
+      height={['40vh', '15vh']}
+      width={['100vw', '100vw']}
+      invertX
+      invertY
+    />
+  </div>
+);
+
 const CARD_HEIGHT = '225px';
 
 const MEDIA_QUERY_SMALL = '@media (max-width: 600px)';
@@ -236,25 +262,28 @@ const ProjectsCerts = () => (
       }
     `}
     render={({ contentfulAbout }) => (
-      <Section.Container id="projects" Background={Background}>
-        <Section.Header name="Projects" icon="💻" Box="notebook" />
-        <CardContainer minWidth="400px">
-          {contentfulAbout.projects.map((p, i) => (
-            <Fade key={p.id} bottom delay={i * 200}>
-              <Project {...p} />
-            </Fade>
-          ))}
-        </CardContainer>
-        <br />
-        <Section.Header name="Certifications" icon="💳" Box="notebook" />
-        <CardContainer minWidth="400px">
-          {contentfulAbout.certifications.map((p, i) => (
-            <Fade key={p.id} bottom delay={i * 200}>
-              <Project {...p} />
-            </Fade>
-          ))}
-        </CardContainer>
-      </Section.Container>
+      <>
+        <Section.Container id="projects" Background={Background}>
+          <Section.Header name="Projects" icon="💻" Box="notebook" />
+          <CardContainer minWidth="400px">
+            {contentfulAbout.projects.map((p, i) => (
+              <Fade key={p.id} bottom delay={i * 200}>
+                <Project {...p} />
+              </Fade>
+            ))}
+          </CardContainer>
+        </Section.Container>
+        <Section.Container id="certifications" Background={Background2}>
+          <Section.Header name="Certifications" icon="💳" Box="notebook" />
+          <CardContainer minWidth="400px">
+            {contentfulAbout.certifications.map((p, i) => (
+              <Fade key={p.id} bottom delay={i * 200}>
+                <Project {...p} />
+              </Fade>
+            ))}
+          </CardContainer>
+        </Section.Container>
+      </>
     )}
   />
 );
