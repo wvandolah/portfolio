@@ -125,9 +125,15 @@ const Project = ({
           {description}
         </Text>
         <Text alignSelf="flex-end">
-          <b>Tech Stack:</b>
-          {` `}
-          {techStack.map((item, index) => (index ? ', ' : '') + item)}
+          {techStack ? (
+            <>
+              <b>Tech Stack:</b>
+              {` `}
+              {techStack.map((item, index) => (index ? ', ' : '') + item)}
+            </>
+          ) : (
+            <></>
+          )}
         </Text>
       </TextContainer>
 
@@ -140,11 +146,15 @@ const Project = ({
             }}
           >
             <Box mx={1} fontSize={5}>
-              <SocialLink
-                name="Check repository"
-                fontAwesomeIcon="github"
-                url={repositoryUrl}
-              />
+              {repositoryUrl ? (
+                <SocialLink
+                  name="Check repository"
+                  fontAwesomeIcon="github"
+                  url={repositoryUrl}
+                />
+              ) : (
+                <></>
+              )}
             </Box>
             <Box mx={1} fontSize={5}>
               <SocialLink
@@ -188,33 +198,46 @@ Project.propTypes = {
   }).isRequired,
 };
 
-const Projects = () => (
-  <Section.Container id="projects" Background={Background}>
-    <Section.Header name="Projects" icon="💻" Box="notebook" />
-    <StaticQuery
-      query={graphql`
-        query ProjectsQuery {
-          contentfulAbout {
-            projects {
-              id
-              name
-              description
-              projectUrl
-              repositoryUrl
-              publishedDate(formatString: "YYYY")
-              type
-              techStack
-              logo {
-                title
-                image: resize(width: 200, quality: 100) {
-                  src
-                }
+const ProjectsCerts = () => (
+  <StaticQuery
+    query={graphql`
+      query ProjectsQuery {
+        contentfulAbout {
+          projects {
+            id
+            name
+            description
+            projectUrl
+            repositoryUrl
+            publishedDate(formatString: "YYYY")
+            type
+            techStack
+            logo {
+              title
+              image: resize(width: 200, quality: 100) {
+                src
+              }
+            }
+          }
+          certifications {
+            id
+            name
+            description
+            projectUrl
+            publishedDate(formatString: "YYYY")
+            logo {
+              title
+              image: resize(width: 200, quality: 100) {
+                src
               }
             }
           }
         }
-      `}
-      render={({ contentfulAbout }) => (
+      }
+    `}
+    render={({ contentfulAbout }) => (
+      <Section.Container id="projects" Background={Background}>
+        <Section.Header name="Projects" icon="💻" Box="notebook" />
         <CardContainer minWidth="400px">
           {contentfulAbout.projects.map((p, i) => (
             <Fade key={p.id} bottom delay={i * 200}>
@@ -222,9 +245,18 @@ const Projects = () => (
             </Fade>
           ))}
         </CardContainer>
-      )}
-    />
-  </Section.Container>
+        <br />
+        <Section.Header name="Certifications" icon="💻" Box="notebook" />
+        <CardContainer minWidth="400px">
+          {contentfulAbout.certifications.map((p, i) => (
+            <Fade key={p.id} bottom delay={i * 200}>
+              <Project {...p} />
+            </Fade>
+          ))}
+        </CardContainer>
+      </Section.Container>
+    )}
+  />
 );
 
-export default Projects;
+export default ProjectsCerts;
