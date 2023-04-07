@@ -6,7 +6,7 @@ orbs:
 jobs:
   build:
     docker:
-      - image: node:10
+      - image: node:18
     steps:
       - checkout
       - run: yarn install
