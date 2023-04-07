@@ -212,9 +212,9 @@ Project.propTypes = {
   name: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
   projectUrl: PropTypes.string.isRequired,
-  repositoryUrl: PropTypes.string.isRequired,
-  type: PropTypes.string.isRequired,
-  techStack: PropTypes.arrayOf(PropTypes.string).isRequired,
+  repositoryUrl: PropTypes.string,
+  type: PropTypes.string,
+  techStack: PropTypes.arrayOf(PropTypes.string),
   publishedDate: PropTypes.string.isRequired,
   logo: PropTypes.shape({
     image: PropTypes.shape({
