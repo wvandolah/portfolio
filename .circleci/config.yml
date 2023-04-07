@@ -12,6 +12,8 @@ jobs:
       - run: yarn install
       - run: yarn build
       - run: yarn lint
+      - aws-cli/install
+      - run: aws --version
       - deploy:
           name: Deploy to S3 and invalidate CloudFront cache
           command: |
